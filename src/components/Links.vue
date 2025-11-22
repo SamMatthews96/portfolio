@@ -5,7 +5,7 @@ import DownloadIcon from '../assets/DownloadIcon.vue';
 
 const linkedinUrl = 'https://www.linkedin.com/in/samdwmatthews/';
 const githubUrl = 'https://github.com/SamMatthews96';
-const cvUrl = '/cv.pdf';
+const cvUrl = '/portfolio/cv.pdf';
 </script>
 
 <template>

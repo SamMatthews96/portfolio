@@ -14,9 +14,6 @@ Research
 			profile
 			Skills
 			contact
-			projects
-			links - linkedin
-			CV link
 
 			
 	

@@ -12,7 +12,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const headlines = ref([
-    'Software Developer',
+    'Full-Stack Web Developer',
     'Hobbyist Game Developer',
     'Dark Theme Enjoyer'
 ]);

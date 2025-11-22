@@ -22,5 +22,45 @@
             "month": 3
         },
         "type": "Volunteer"
+    },
+    {
+        "name": "Improv Comedy",
+        "startDate": {
+            "year": 2023,
+            "month": 3
+        },
+        "type": "Hobby"
+    },
+    {
+        "name": "Game Development",
+        "startDate": {
+            "year": 2022,
+            "month": 9
+        },
+        "type": "Hobby"
+    },
+    {
+        "name": "Digital Champion",
+        "startDate": {
+            "year": 2019,
+            "month": 1
+        },
+        "endDate": {
+            "year": 2019,
+            "month": 12
+        },
+        "type": "Volunteer"
+    },
+    {
+        "name": "Service Desk Analyst",
+        "startDate": {
+            "year": 2020,
+            "month": 1
+        },
+        "endDate": {
+            "year": 2021,
+            "month": 1
+        },
+        "type": "Employment"
     }
 ]
