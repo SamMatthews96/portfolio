@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Intreface",
+        "startDate": {
+            "year": 2021,
+            "month": 7
+        },
+        "endDate": {
+            "year": 2025,
+            "month": 6
+        },
+        "type": "Employment"
+    },
+    {
+        "name": "DigiLocal",
+        "startDate": {
+            "year": 2019,
+            "month": 9
+        },
+        "endDate": {
+            "year": 2024,
+            "month": 3
+        },
+        "type": "Volunteer"
+    }
+]

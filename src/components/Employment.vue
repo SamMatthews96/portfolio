@@ -1,4 +1,9 @@
 <template>
+    <div class="button-container">
+        <button>Employment</button>
+        <button>Hobbies</button>
+        <button>Volunteering</button>
+    </div>
     <div class="timeline-container">
         <div class="timeline-line"></div>
         <div class="timeline-years">
@@ -8,12 +13,8 @@
             </div>
         </div>
         <div class="timeline-items">
-            <div 
-                v-for="(item, index) in props.items" 
-                :key="index" 
-                class="timeline-item"
-                :style="getItemStyle(item, index)"
-            >
+            <div v-for="(item, index) in timelineItems" :key="index" class="timeline-item"
+                :style="getItemStyle(item, index)">
                 <span class="item-name">{{ item.name }}</span>
             </div>
         </div>
@@ -29,13 +30,7 @@ interface TimelineItem {
     endDate: { year: number; month: number };
 }
 
-interface Props {
-    items?: TimelineItem[];
-}
-
-const props = withDefaults(defineProps<Props>(), {
-    items: () => []
-});
+import timelineItems from '../data/timelineItems.json'
 
 const startYear = 2019;
 const now = new Date();
@@ -65,31 +60,31 @@ const doRangesOverlap = (item1: TimelineItem, item2: TimelineItem): boolean => {
     const end1 = dateToTimestamp(item1.endDate);
     const start2 = dateToTimestamp(item2.startDate);
     const end2 = dateToTimestamp(item2.endDate);
-    
+
     return start1 <= end2 && start2 <= end1;
 };
 
 // Compute all lane assignments at once for efficiency
 const itemLanes = computed(() => {
     const lanes: number[] = [];
-    
-    for (let i = 0; i < props.items.length; i++) {
-        const currentItem = props.items[i];
+
+    for (let i = 0; i < timelineItems.length; i++) {
+        const currentItem = timelineItems[i];
         if (!currentItem) {
             lanes[i] = 0;
             continue;
         }
-        
+
         if (i === 0) {
             lanes[i] = 0;
             continue;
         }
-        
+
         const occupiedLanes: number[] = [];
-        
+
         // Check each previous item to see which lanes are occupied
         for (let j = 0; j < i; j++) {
-            const previousItem = props.items[j];
+            const previousItem = timelineItems[j];
             if (previousItem && doRangesOverlap(currentItem, previousItem)) {
                 const previousLane = lanes[j];
                 if (previousLane !== undefined) {
@@ -97,16 +92,16 @@ const itemLanes = computed(() => {
                 }
             }
         }
-        
+
         // Find the first available lane (starting from 0)
         let lane = 0;
         while (occupiedLanes.includes(lane)) {
             lane++;
         }
-        
+
         lanes[i] = lane;
     }
-    
+
     return lanes;
 });
 
@@ -115,7 +110,7 @@ const getItemStyle = (item: TimelineItem, index: number) => {
     const right = 100 - getDatePosition(item.endDate);
     const lane = itemLanes.value[index] || 0;
     const verticalOffset = lane * 44; // 32px height + 12px spacing
-    
+
     return {
         left: `${left}%`,
         right: `${right}%`,
