@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: dark;
-  --font-color: rgba(206, 236, 207, 0.87);
+  --font-color: #EEEEEE;
   color: var(--font-color);
 
   font-synthesis: none;

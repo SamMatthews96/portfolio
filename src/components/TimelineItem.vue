@@ -3,7 +3,7 @@
         <span ref="timelineItem" :class="{ 'open': isOpen }" @click="isOpen = !isOpen">
             {{ item.name }} {{ isMouseover ? '(Show More)' : '' }}
         </span>
-        
+
     </div>
 
 </template>
@@ -33,7 +33,7 @@ switch (item.type) {
         backgroundColor.value = 'rgb(70, 85, 171)'
         break;
     case 'Hobby':
-        backgroundColor.value = 'rgb(87, 171, 70)'
+        backgroundColor.value = 'rgb(27, 139, 40)'
         break;
     default:
         throw new Error(`[20251122.2002] Unsupported Type: ${item.type}`)
