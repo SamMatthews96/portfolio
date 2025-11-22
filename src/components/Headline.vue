@@ -35,6 +35,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+
 .headline-container {
     position: relative;
     height: 4em;
@@ -56,7 +57,7 @@ onUnmounted(() => {
 }
 
 .slide-leave-to {
-    transform: translateX(100%);
+    transform: translateX(10%);
     opacity: 0;
 }
 
@@ -66,7 +67,7 @@ onUnmounted(() => {
 }
 
 .slide-enter-from {
-    transform: translateX(-100%);
+    transform: translateX(-10%);
     opacity: 0;
 }
 

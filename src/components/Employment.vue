@@ -13,16 +13,19 @@
             </div>
         </div>
         <div class="timeline-items">
-            <div v-for="(item, index) in timelineItems" :key="index" class="timeline-item"
+            <!-- <div v-for="(item, index) in timelineItems" :key="index" class="timeline-item"
                 :style="getItemStyle(item, index)">
                 <span class="item-name">{{ item.name }}</span>
+            </div> -->
+            <div v-for="(item) in lanes">
+                lane
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, ref, type Ref } from 'vue';
 
 interface TimelineItem {
     name: string;
@@ -31,6 +34,35 @@ interface TimelineItem {
 }
 
 import timelineItems from '../data/timelineItems.json'
+const lanes: Ref<Array<Array<TimelineItem>>> = ref([]);
+
+onMounted(() => {
+    timelineItems.forEach(item => {
+        let currentLaneNumber = 0;
+
+        while (true) {
+            const isOverlap = lanes.value[currentLaneNumber]?.some(laneItem =>
+                doRangesOverlap(item, laneItem)
+            )
+            if (isOverlap) {
+                currentLaneNumber++;
+            } else {
+                if (lanes.value[currentLaneNumber]) {
+                    lanes.value[currentLaneNumber]?.push(item)
+                } else {
+                    lanes.value[currentLaneNumber] = [item]
+                }
+                break;
+            }
+        }
+
+    })
+
+    console.log(lanes.value)
+});
+
+
+
 
 const startYear = 2019;
 const now = new Date();
