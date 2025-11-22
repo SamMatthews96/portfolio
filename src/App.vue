@@ -3,6 +3,7 @@
 import Skills from './components/Skills.vue'
 import Links from './components/Links.vue';
 import Headline from './components/Headline.vue';
+import Employment from './components/Employment.vue';
 
 </script>
 
@@ -20,7 +21,7 @@ import Headline from './components/Headline.vue';
 
 
   <Skills />
-  <h2>Experience</h2>
+  <Employment></Employment>
   <Links></Links>
 
 </template>

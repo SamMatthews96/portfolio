@@ -1,13 +1,5 @@
-Profile
-Skills
 
 Content
-    Headline
-        Could have it cycle between alternatives
-            Full-Stack Web Developer
-            Hobbyist Game Developer
-            Dark Theme Enjoyer
-
     Professional Experience
         monday
             AWS stack
@@ -19,3 +11,17 @@ Content
 
     Personal Projects
         Game Dev
+
+
+Display ideas
+    I don't have a lot of experience, so it might suit best to display the whole
+    thing in 
+
+    display experience in a timeline
+    make each item on experience a min version
+        Icon, Name, Dates
+        Intreface, 2021 - 2025
+        DigiLocal, 2019 - 2024
+        Uni DTSS, 2022 - 2025
+        
+        Game Development, 2023 - Present

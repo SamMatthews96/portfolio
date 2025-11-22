@@ -7,7 +7,7 @@ import SkillItem from './SkillItem.vue';
 
 <template>
     <h2>Skills</h2>
-    <div class="skills-list test-border">
+    <div class="skills-list">
         <SkillItem name="HTML"/>
         <SkillItem name="CSS"/>
         <SkillItem name="JavaScript"/>
