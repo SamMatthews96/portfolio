@@ -17,8 +17,10 @@
                 :style="getItemStyle(item, index)">
                 <span class="item-name">{{ item.name }}</span>
             </div> -->
-            <div v-for="(item) in lanes">
-                lane
+            <div v-for="(lane) in lanes">
+                <span v-for="item in lane" >
+                    {{ item.name }}
+                </span>
             </div>
         </div>
     </div>
@@ -77,11 +79,11 @@ const getYearPosition = (year: number): number => {
     return (daysFromStart / totalDays) * 100;
 };
 
-const getDatePosition = (date: { year: number; month: number }): number => {
-    const dateObj = new Date(date.year, date.month - 1, 1);
-    const daysFromStart = Math.floor((dateObj.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
-    return (daysFromStart / totalDays) * 100;
-};
+// const getDatePosition = (date: { year: number; month: number }): number => {
+//     const dateObj = new Date(date.year, date.month - 1, 1);
+//     const daysFromStart = Math.floor((dateObj.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+//     return (daysFromStart / totalDays) * 100;
+// };
 
 const dateToTimestamp = (date: { year: number; month: number }): number => {
     return new Date(date.year, date.month - 1, 1).getTime();
