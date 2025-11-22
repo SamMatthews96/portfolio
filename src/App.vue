@@ -5,6 +5,14 @@ import Links from './components/Links.vue';
 import Headline from './components/Headline.vue';
 import Employment from './components/Employment.vue';
 
+const timelineItems = [
+    {
+        name: 'Intreface',
+        startDate: { year: 2021, month: 7 },
+        endDate: { year: 2025, month: 6 }
+    }
+];
+
 </script>
 
 <template>
@@ -21,7 +29,7 @@ import Employment from './components/Employment.vue';
 
 
   <Skills />
-  <Employment></Employment>
+  <Employment :items="timelineItems"></Employment>
   <Links></Links>
 
 </template>
