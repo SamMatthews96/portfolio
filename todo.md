@@ -8,13 +8,6 @@ Content
             Hobbyist Game Developer
             Dark Theme Enjoyer
 
-
-    Links / Contact
-        Linkedin
-        Github
-            unprivate my game, it's doesn't matter yet
-            push portfolio to github
-
     Professional Experience
         monday
             AWS stack

@@ -9,6 +9,7 @@ const cvUrl = '/cv.pdf';
 </script>
 
 <template>
+    <h2>Links</h2>
   <div class="links-container">
     <a 
       :href="linkedinUrl" 
@@ -56,7 +57,7 @@ const cvUrl = '/cv.pdf';
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--font-color);
   text-decoration: none;
   transition: transform 0.2s ease, color 0.2s ease;
   cursor: pointer;

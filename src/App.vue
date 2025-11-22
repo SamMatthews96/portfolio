@@ -2,12 +2,13 @@
 
 import Skills from './components/Skills.vue'
 import Links from './components/Links.vue';
+import Headline from './components/Headline.vue';
 
 </script>
 
 <template>
   <h1>Sam Matthews</h1>
-  <p>Software Developer </p>
+  <Headline />
   <!-- Personal Summary -->
   <p>
     Placeholder: With a passion for creating efficient and user-friendly applications, I've developed expertise in
