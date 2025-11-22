@@ -12,7 +12,7 @@
                 v-for="(item, index) in props.items" 
                 :key="index" 
                 class="timeline-item"
-                :style="getItemStyle(item)"
+                :style="getItemStyle(item, index)"
             >
                 <span class="item-name">{{ item.name }}</span>
             </div>
@@ -21,6 +21,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+
 interface TimelineItem {
     name: string;
     startDate: { year: number; month: number };
@@ -54,12 +56,70 @@ const getDatePosition = (date: { year: number; month: number }): number => {
     return (daysFromStart / totalDays) * 100;
 };
 
-const getItemStyle = (item: TimelineItem) => {
+const dateToTimestamp = (date: { year: number; month: number }): number => {
+    return new Date(date.year, date.month - 1, 1).getTime();
+};
+
+const doRangesOverlap = (item1: TimelineItem, item2: TimelineItem): boolean => {
+    const start1 = dateToTimestamp(item1.startDate);
+    const end1 = dateToTimestamp(item1.endDate);
+    const start2 = dateToTimestamp(item2.startDate);
+    const end2 = dateToTimestamp(item2.endDate);
+    
+    return start1 <= end2 && start2 <= end1;
+};
+
+// Compute all lane assignments at once for efficiency
+const itemLanes = computed(() => {
+    const lanes: number[] = [];
+    
+    for (let i = 0; i < props.items.length; i++) {
+        const currentItem = props.items[i];
+        if (!currentItem) {
+            lanes[i] = 0;
+            continue;
+        }
+        
+        if (i === 0) {
+            lanes[i] = 0;
+            continue;
+        }
+        
+        const occupiedLanes: number[] = [];
+        
+        // Check each previous item to see which lanes are occupied
+        for (let j = 0; j < i; j++) {
+            const previousItem = props.items[j];
+            if (previousItem && doRangesOverlap(currentItem, previousItem)) {
+                const previousLane = lanes[j];
+                if (previousLane !== undefined) {
+                    occupiedLanes.push(previousLane);
+                }
+            }
+        }
+        
+        // Find the first available lane (starting from 0)
+        let lane = 0;
+        while (occupiedLanes.includes(lane)) {
+            lane++;
+        }
+        
+        lanes[i] = lane;
+    }
+    
+    return lanes;
+});
+
+const getItemStyle = (item: TimelineItem, index: number) => {
     const left = getDatePosition(item.startDate);
     const right = 100 - getDatePosition(item.endDate);
+    const lane = itemLanes.value[index] || 0;
+    const verticalOffset = lane * 44; // 32px height + 12px spacing
+    
     return {
         left: `${left}%`,
-        right: `${right}%`
+        right: `${right}%`,
+        top: `${verticalOffset}px`
     };
 };
 </script>
@@ -120,11 +180,11 @@ const getItemStyle = (item: TimelineItem) => {
     position: relative;
     width: 100%;
     margin-top: 3rem;
+    min-height: 100px;
 }
 
 .timeline-item {
     position: absolute;
-    top: 0;
     height: 32px;
     background: rgba(206, 236, 207, 0.15);
     border: 1px solid rgba(206, 236, 207, 0.3);
@@ -133,7 +193,7 @@ const getItemStyle = (item: TimelineItem) => {
     align-items: center;
     justify-content: center;
     padding: 0 0.75rem;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease, top 0.3s ease;
 }
 
 .timeline-item:hover {

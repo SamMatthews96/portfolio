@@ -6,11 +6,16 @@ import Headline from './components/Headline.vue';
 import Employment from './components/Employment.vue';
 
 const timelineItems = [
-    {
-        name: 'Intreface',
-        startDate: { year: 2021, month: 7 },
-        endDate: { year: 2025, month: 6 }
-    }
+  {
+    name: 'Intreface',
+    startDate: { year: 2021, month: 7 },
+    endDate: { year: 2025, month: 6 }
+  },
+  {
+    name: 'DigiLocal',
+    startDate: { year: 2019, month: 9 },
+    endDate: { year: 2024, month: 3 }
+  }
 ];
 
 </script>

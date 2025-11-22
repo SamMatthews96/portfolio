@@ -20,8 +20,8 @@ Display ideas
     display experience in a timeline
     make each item on experience a min version
         Icon, Name, Dates
-        Intreface, 2021 - 2025
-        DigiLocal, 2019 - 2024
-        Uni DTSS, 2022 - 2025
+        Intreface, 24/07/2021 - 30/06/2025
+        DigiLocal, 01/09/2019 - 01/03/2024
+        Uni DTSS, 03/10/2022 - 28/11/2025
         
-        Game Development, 2023 - Present
+        Game Development, 01/01/2023 - Present
